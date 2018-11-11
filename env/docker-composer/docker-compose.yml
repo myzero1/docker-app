@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mysql:
+    build:
+      # Dockerfile 目录或 git 仓库网址
+      context: ./dir | .
+      # Dockerfile 文件名称
+      dockerfile: Dockerfile-alternate
+    image: mysql:z1.1.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=fecshop
+    networks:
+      - code-network
+networks:
+  code-network:
+    driver: bridge

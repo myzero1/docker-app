@@ -3,6 +3,8 @@ services:
   mysql:
     image: mysql:5.7
     restart: always
+    ports:
+      - "3306:3306"
     volumes:
       - /var/docker-worspace/docker-app/data/mysql:/var/lib/mysql
       - /var/docker-worspace/docker-app/env/services/mysql/conf.d:/etc/mysql/conf.d

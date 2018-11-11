@@ -4,9 +4,8 @@ services:
     image: mysql:5.7
     restart: always
     volumes:
-      - /var/docker-lemp/db/mysql/data:/var/lib/mysql
-      - /var/docker-lemp/db/mysql/example_db:/var/example_db
-      - ./db/mysql/conf.d:/etc/mysql/conf.d
+      - /var/docker-worspace/docker-app/data/mysql:/var/lib/mysql
+      - /var/docker-worspace/docker-app/env/services/mysql/conf.d:/etc/mysql/conf.d
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=123456

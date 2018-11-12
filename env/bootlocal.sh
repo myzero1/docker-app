@@ -2,8 +2,9 @@
 
 # path/to/.docker/docker-workspace	https://github.com/myzero1/docker-app.git
 # 	docker-app
-# 		app
-# 		env
+# 		app 	# for app code or config
+# 		env		# for env
+# 		data  	# for data
 
 #change the mirror
 sudo sed -i "s|EXTRA_ARGS='|EXTRA_ARGS='--registry-mirror=http://f1361db2.m.daocloud.io |g" /var/lib/boot2docker/profile

@@ -35,7 +35,38 @@ services:
       - ../app:/www/web
       - /var/docker-worspace/docker-app/env/services/php/etc/php7.1.13.ini:/usr/local/etc/php/conf.d/php7.1.13.ini
     depends_on:
+      - mongodb
       - mysql
+    networks:
+      - code-network
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/data/logs
+    volumes:
+      - /var/docker-worspace/docker-app/data/mongodb/db:/data/db
+      - /var/docker-worspace/docker-app/data/mongodb/logs:/data/logs
+      - /var/docker-worspace/docker-app/env/services/mongodb/example_db:/data/example_db
+    networks:
+      - code-network
+  redis:
+    image: redis
+    restart: always
+    environment:
+        REDIS_PASS_FILE: /run/secrets/redis-password
+    command: [
+      "bash", "-c",
+      '
+       docker-entrypoint.sh
+       --requirepass "$$(cat $$REDIS_PASS_FILE)"
+      '
+    ]
+    volumes:
+      - /var/docker-worspace/docker-app/env/services/redis/etc/redis.conf:/usr/local/etc/redis/redis.conf
+      - /var/docker-worspace/docker-app/env/services/redis/etc/redis-password:/run/secrets/redis-password
+      - /var/docker-worspace/docker-app/data/redis/data:/data
     networks:
       - code-network
 networks:

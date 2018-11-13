@@ -10,7 +10,7 @@ services:
       - /var/docker-worspace/docker-app/env/services/web/nginx/conf:/etc/nginx
       - /var/docker-worspace/docker-app/data/web/nginx/web_logs:/www/web_logs
     networks:
-        - code-network
+      - code-network
     depends_on:
       - php
   mysql:
@@ -37,7 +37,7 @@ services:
     depends_on:
       - mysql
     networks:
-        - code-network
+      - code-network
 networks:
   code-network:
     driver: bridge

@@ -22,5 +22,8 @@ dockertool和docker-ccompose的使用
 					bootlocal.sh			docker-machine的自启动脚本，machine每次启动都会执行。在第一次使用machine时需要配置。
 					docker-compose.yml		docker-compose配置文件
 					sevices					各种服务的配置文件。
+		配置hosts
+			127.0.0.1      phpmyadmin.app.test		advanced.app.test
+			http://phpmyadmin.app.test/直接访问数据库
 
 ```
